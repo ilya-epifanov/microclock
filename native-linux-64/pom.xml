@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>ru.smartislav.microclock</groupId>
+    <artifactId>microclock-parent</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>native-linux-64</artifactId>
+  <packaging>so</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>ru.smartislav.microclock</groupId>
+      <artifactId>native-noarch</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>native-maven-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <javahClassNames>
+            <javahClassName>ru.smartislav.clock.rdtsc.RdTscSource</javahClassName>
+          </javahClassNames>
+          <javahOS>linux</javahOS>
+          <javahSearchJNIFromDependencies>true</javahSearchJNIFromDependencies>
+
+          <sources>
+            <source>
+              <directory>src/main/c</directory>
+              <fileNames>
+                <fileName>RdTscSource.c</fileName>
+              </fileNames>
+            </source>
+          </sources>
+
+          <compilerEndOptions>
+            <option>-m64</option>
+          </compilerEndOptions>
+          <linkerEndOptions>
+            <option>-nostdlib</option>
+            <option>-shared</option>
+            <option>-m64</option>
+          </linkerEndOptions>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>enforce-os</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireOS>
+                  <name>Linux</name>
+                  <arch>x86_64</arch>
+                </requireOS>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
