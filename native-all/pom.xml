@@ -25,12 +25,6 @@
     </dependency>
     <dependency>
       <groupId>ru.smartislav.microclock</groupId>
-      <artifactId>native-linux-32</artifactId>
-      <type>so</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>ru.smartislav.microclock</groupId>
       <artifactId>native-linux-64</artifactId>
       <type>so</type>
       <scope>provided</scope>
