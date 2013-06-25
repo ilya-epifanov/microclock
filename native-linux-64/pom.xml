@@ -63,8 +63,8 @@
             <configuration>
               <rules>
                 <requireOS>
-                  <name>Linux</name>
-                  <arch>x86_64</arch>
+                  <name>linux</name>
+                  <arch>amd64</arch>
                 </requireOS>
               </rules>
             </configuration>
