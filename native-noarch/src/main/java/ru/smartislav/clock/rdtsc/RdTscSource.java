@@ -14,7 +14,7 @@ public final class RdTscSource {
     String suffix = "";
     if (os.equalsIgnoreCase("Mac OS X") && arch.equalsIgnoreCase("x86_64")) {
       suffix = "macosx.jnilib";
-    } else if (os.equalsIgnoreCase("Linux") && arch.equalsIgnoreCase("x86_64")) {
+    } else if (os.equalsIgnoreCase("Linux") && arch.equalsIgnoreCase("amd64")) {
       suffix = "linux-64.so";
     } else if (os.equalsIgnoreCase("Linux") && arch.equalsIgnoreCase("x86")) {
       suffix = "linux-32.so";
