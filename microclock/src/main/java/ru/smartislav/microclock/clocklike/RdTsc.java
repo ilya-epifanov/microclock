@@ -2,8 +2,8 @@ package ru.smartislav.microclock.clocklike;
 
 import java.lang.reflect.Method;
 
-final class RdTsc {
-  static final ClockLike instance = obtainInstance();
+public final class RdTsc {
+  public static final ClockLike instance = obtainInstance();
 
   private static ClockLike obtainInstance() {
     try {
