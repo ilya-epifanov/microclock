@@ -1,9 +1,9 @@
 package ru.smartislav.microclock.clocklike;
 
 public abstract class ClockLike {
-  abstract long ticks();
+  public abstract long ticks();
 
-  abstract boolean hasDeclaredFrequency();
+  public abstract boolean hasDeclaredFrequency();
 
-  abstract long frequency();
+  public abstract long frequency();
 }
