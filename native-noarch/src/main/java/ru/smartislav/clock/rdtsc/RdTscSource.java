@@ -8,16 +8,24 @@ import java.io.OutputStream;
 
 public final class RdTscSource {
   static {
-    String os = System.getProperty("os.name", "");
-    String arch = System.getProperty("os.arch", "");
+    String os = System.getProperty("os.name", "").toLowerCase();
+    String arch = System.getProperty("os.arch", "").toLowerCase();
 
     String suffix = "";
-    if (os.equalsIgnoreCase("Mac OS X") && arch.equalsIgnoreCase("x86_64")) {
+    if (os.equals("mac os x") && arch.equalsIgnoreCase("x86_64")) {
       suffix = "macosx.jnilib";
-    } else if (os.equalsIgnoreCase("Linux") && arch.equalsIgnoreCase("amd64")) {
-      suffix = "linux-64.so";
-    } else if (os.equalsIgnoreCase("Linux") && arch.equalsIgnoreCase("x86")) {
-      suffix = "linux-32.so";
+    } else if (os.equals("linux")) {
+      if (arch.equals("amd64")) {
+        suffix = "linux-64.so";
+      } else if (arch.equals("x86")) {
+        suffix = "linux-32.so";
+      }
+    } else if (os.startsWith("windows")) {
+      if (arch.equals("amd64")) {
+        suffix = "win-64.dll";
+      } else if (arch.equals("x86")) {
+        suffix = "win-32.dll";
+      }
     }
 
     InputStream in = RdTscSource.class.getClassLoader().getResourceAsStream("jni/clock-native-" + suffix);

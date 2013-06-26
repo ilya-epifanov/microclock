@@ -25,8 +25,26 @@
     </dependency>
     <dependency>
       <groupId>ru.smartislav.microclock</groupId>
+      <artifactId>native-linux-32</artifactId>
+      <type>so</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>ru.smartislav.microclock</groupId>
       <artifactId>native-linux-64</artifactId>
       <type>so</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>ru.smartislav.microclock</groupId>
+      <artifactId>native-win-32</artifactId>
+      <type>dll</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>ru.smartislav.microclock</groupId>
+      <artifactId>native-win-64</artifactId>
+      <type>dll</type>
       <scope>provided</scope>
     </dependency>
   </dependencies>
@@ -44,7 +62,7 @@
         </executions>
         <configuration>
           <stripVersion>true</stripVersion>
-          <includeTypes>jnilib,so</includeTypes>
+          <includeTypes>jnilib,so,dll</includeTypes>
           <outputDirectory>${project.build.outputDirectory}/jni</outputDirectory>
         </configuration>
       </plugin>
