@@ -28,7 +28,7 @@ public final class RdTscSource {
       }
     }
 
-    InputStream in = RdTscSource.class.getClassLoader().getResourceAsStream("ru/smartislav/microclock/jni/" + suffix);
+    InputStream in = RdTscSource.class.getClassLoader().getResourceAsStream("ru/smartislav/microclock/jni/native-" + suffix);
     if (in != null) {
       try {
         File tempFile = File.createTempFile("ru.smartislav.microclock.native-", suffix);
