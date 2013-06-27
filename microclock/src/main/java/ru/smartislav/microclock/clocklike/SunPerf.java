@@ -8,7 +8,7 @@ public final class SunPerf {
   private static ClockLike obtainInstance() {
     try {
       Class<?> klass = Class.forName("ru.smartislav.microclock.clocklike.SunPerfProvider");
-      Method getMethod = klass.getMethod("obtainInstance");
+      Method getMethod = klass.getDeclaredMethod("obtainInstance");
       return (ClockLike)getMethod.invoke(null);
     } catch (Throwable ignored) {
     }
