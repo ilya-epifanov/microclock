@@ -12,7 +12,7 @@ public final class RdTscSource {
     String arch = System.getProperty("os.arch", "").toLowerCase();
 
     String suffix = "";
-    if (os.equals("mac os x") && arch.equalsIgnoreCase("x86_64")) {
+    if (os.equals("mac os x") && arch.equals("x86_64")) {
       suffix = "macosx.jnilib";
     } else if (os.equals("linux")) {
       if (arch.equals("amd64")) {
@@ -28,10 +28,10 @@ public final class RdTscSource {
       }
     }
 
-    InputStream in = RdTscSource.class.getClassLoader().getResourceAsStream("jni/clock-native-" + suffix);
+    InputStream in = RdTscSource.class.getClassLoader().getResourceAsStream("ru/smartislav/microclock/jni/" + suffix);
     if (in != null) {
       try {
-        File tempFile = File.createTempFile("clock-native-", suffix);
+        File tempFile = File.createTempFile("ru.smartislav.microclock.native-", suffix);
         tempFile.deleteOnExit();
         OutputStream tempLib = new FileOutputStream(tempFile);
         try {

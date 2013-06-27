@@ -59,7 +59,7 @@
         <configuration>
           <stripVersion>true</stripVersion>
           <includeTypes>jnilib,so,dll</includeTypes>
-          <outputDirectory>${project.build.outputDirectory}/jni</outputDirectory>
+          <outputDirectory>${project.build.outputDirectory}/ru/smartislav/microclock/jni</outputDirectory>
         </configuration>
       </plugin>
       <plugin>
