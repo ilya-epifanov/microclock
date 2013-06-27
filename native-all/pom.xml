@@ -15,10 +15,6 @@
   <dependencies>
     <dependency>
       <groupId>ru.smartislav.microclock</groupId>
-      <artifactId>native-noarch</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>ru.smartislav.microclock</groupId>
       <artifactId>native-macosx</artifactId>
       <type>jnilib</type>
       <scope>provided</scope>
