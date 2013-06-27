@@ -7,7 +7,7 @@ public final class RdTsc {
 
   private static ClockLike obtainInstance() {
     try {
-      Class<?> klass = Class.forName("ru.smartislav.spectator2.clock.clocklike.RdTscProvider");
+      Class<?> klass = Class.forName("ru.smartislav.microclock.clocklike.RdTscProvider");
       Method getMethod = klass.getMethod("obtainInstance");
       return (ClockLike)getMethod.invoke(null);
     } catch (Throwable ignored) {
