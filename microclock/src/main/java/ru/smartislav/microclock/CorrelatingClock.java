@@ -2,10 +2,10 @@ package ru.smartislav.microclock;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-final class CorrelatingMicroClock extends MicroClock {
+final class CorrelatingClock extends Clock {
   private final AtomicReference<CorrelationParams> params;
 
-  CorrelatingMicroClock(CorrelationParams params) {
+  CorrelatingClock(CorrelationParams params) {
     this.params = new AtomicReference<CorrelationParams>(params);
   }
 

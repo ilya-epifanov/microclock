@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>ru.smartislav.microclock</groupId>
+    <artifactId>microclock-parent</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>benchmark</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>ru.smartislav.microclock</groupId>
+      <artifactId>microclock</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ru.smartislav.microclock</groupId>
+      <artifactId>native-noarch</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ru.smartislav.microclock</groupId>
+      <artifactId>native-all</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.caliper</groupId>
+      <artifactId>caliper</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.atychyna</groupId>
+        <artifactId>caliper-maven-plugin</artifactId>
+        <version>1.0</version>
+        <executions>
+          <execution>
+            <id>run</id>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <instruments>
+                <instrument>micro</instrument>
+              </instruments>
+              <vms>
+                <vm>6</vm>
+                <vm>7</vm>
+                <vm>8</vm>
+              </vms>
+              <timeLimit>10m</timeLimit>
+              <trials>3</trials>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -2,11 +2,11 @@ package ru.smartislav.microclock;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-final class StrictlyMonotonicMicroClockWrapper extends MicroClock {
-  private final MicroClock backend;
+final class StrictMonoClock extends Clock {
+  private final Clock backend;
   private final AtomicLong lastMicros = new AtomicLong(Long.MIN_VALUE);
 
-  StrictlyMonotonicMicroClockWrapper(MicroClock backend) {
+  StrictMonoClock(Clock backend) {
     this.backend = backend;
   }
 

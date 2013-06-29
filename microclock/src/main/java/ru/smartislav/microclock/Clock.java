@@ -1,13 +1,14 @@
 package ru.smartislav.microclock;
 
-public abstract class MicroClock {
+public abstract class Clock {
   static final long nanosInMilli = 1000l * 1000;
   static final long maxNsDriftPerMs = 500l;
 
-  private static final MicroClock backend = selectBestBackend();
-  private static final WeaklyMonotonicMicroClockWrapper weaklyMonoClock = new WeaklyMonotonicMicroClockWrapper(backend);
-  private static final StrictlyMonotonicMicroClockWrapper strictlyMonoClock = new StrictlyMonotonicMicroClockWrapper(backend);
+  private static final Clock backend = selectBestBackend();
+  private static final MonoClock monoClock = new MonoClock(backend);
+  private static final StrictMonoClock strictMonoClock = new StrictMonoClock(backend);
 
+  @SuppressWarnings("UnusedDeclaration")
   public abstract long micros();
 
   @SuppressWarnings("UnusedDeclaration")
@@ -16,25 +17,25 @@ public abstract class MicroClock {
   }
 
   @SuppressWarnings("UnusedDeclaration")
-  public static long weaklyMonotonicNow() {
-    return weaklyMonoClock.micros();
+  public static long monoNow() {
+    return monoClock.micros();
   }
 
   @SuppressWarnings("UnusedDeclaration")
-  public static long strictlyMonotonicNow() {
-    return strictlyMonoClock.micros();
+  public static long strictMonoNow() {
+    return strictMonoClock.micros();
   }
 
-  private static MicroClock selectBestBackend() {
+  private static Clock selectBestBackend() {
     CorrelationParams params = initialEstimate();
     if (Math.abs(params.nanos - (params.millis * nanosInMilli)) < 10000) {
-      return new NanoMicroClock();
+      return new NanoClock();
     } else {
-      return new CorrelatingMicroClock(params);
+      return new CorrelatingClock(params);
     }
   }
 
-  private static CorrelationParams initialEstimate() {
+  static CorrelationParams initialEstimate() {
     final long startNanos = System.nanoTime();
     long lastMillis = System.currentTimeMillis();
     long lastNanos = startNanos;

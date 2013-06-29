@@ -1,10 +1,10 @@
 package ru.smartislav.microclock;
 
-public final class NonThreadSafeWeaklyMonotonicMicroClockWrapper extends MicroClock {
-  private final MicroClock backend;
+public final class PrivateMonoClock extends Clock {
+  private final Clock backend;
   private long lastMicros = Long.MIN_VALUE;
 
-  public NonThreadSafeWeaklyMonotonicMicroClockWrapper(MicroClock backend) {
+  public PrivateMonoClock(Clock backend) {
     this.backend = backend;
   }
 

@@ -48,7 +48,6 @@
           <compilerEndOptions>
           </compilerEndOptions>
           <linkerEndOptions>
-<!--            <option>-nostdlib</option> -->
             <option>-shared</option>
           </linkerEndOptions>
         </configuration>
