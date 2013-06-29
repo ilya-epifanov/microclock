@@ -51,6 +51,12 @@
               </vms>
               <timeLimit>10m</timeLimit>
               <trials>3</trials>
+              <properties>
+                <instrument.micro.options.warmup>2m</instrument.micro.options.warmup>
+                <instrument.micro.options.timingInterval>500ms</instrument.micro.options.timingInterval>
+                <instrument.micro.options.reportedIntervals>37</instrument.micro.options.reportedIntervals>
+                <instrument.micro.options.maxRuntime>5m</instrument.micro.options.maxRuntime>
+              </properties>
             </configuration>
           </execution>
         </executions>
