@@ -24,14 +24,16 @@ final class CorrelatingClock extends Clock {
       if (p.millis != millis) {
         long nextNanos = p.nanos + nanosInMilli * (millis - p.millis);
         long diffNanos = nextNanos - nanos;
+        long nanoUncertainty = 0l;
+        long leapNanos = 0l;
         if (diffNanos > -maxNsDriftPerMs * (millis - p.millis)) {
-          CorrelationParams newParams = new CorrelationParams(nanos, millis);
+          CorrelationParams newParams = new CorrelationParams(nanos, nanoUncertainty, millis, leapNanos);
           if (params.compareAndSet(p, newParams))
             return micros(newParams, nanos);
           else
             p = params.get();
         } else {
-          params.compareAndSet(p, new CorrelationParams(p.nanos + nanosInMilli * (millis - p.millis), millis));
+          params.compareAndSet(p, new CorrelationParams(p.nanos + nanosInMilli * (millis - p.millis), nanoUncertainty, millis, leapNanos));
           p = params.get();
         }
       }

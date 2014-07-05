@@ -3,14 +3,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>ru.smartislav.commons</groupId>
+    <groupId>com.github.hajile.common-pom-oss</groupId>
     <artifactId>common-pom-oss</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.2</version>
   </parent>
   <packaging>pom</packaging>
   <groupId>ru.smartislav.microclock</groupId>
   <artifactId>microclock-parent</artifactId>
   <version>0.1-SNAPSHOT</version>
+
+  <modules>
+    <module>microclock</module>
+    <module>native-noarch</module>
+    <module>native-all</module>
+    <module>native-linux-32</module>
+    <module>native-linux-64</module>
+    <module>native-macosx</module>
+    <module>native-win-32</module>
+    <module>native-win-64</module>
+  </modules>
 
   <dependencyManagement>
     <dependencies>
@@ -79,7 +90,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>native-maven-plugin</artifactId>
-          <version>1.0-alpha-7</version>
+          <version>1.0-alpha-8</version>
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
