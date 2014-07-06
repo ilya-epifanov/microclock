@@ -57,7 +57,5 @@ public final class RdTscSource {
     }
   }
 
-  public static native boolean isRdtscConstant();
-
   public static native long rdtsc();
 }
